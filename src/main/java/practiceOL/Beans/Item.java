@@ -10,8 +10,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 /**
- * Bean represent the item table 
- * @author alon seftel
+ * Bean represent the item table
+ * 
+ * @author alons
  *
  */
 @Entity
@@ -35,7 +36,6 @@ public class Item {
 		this.amount = amount;
 		this.code = code;
 	}
-	
 
 	public Item(String name, int amount, int code) {
 		super();
@@ -44,12 +44,10 @@ public class Item {
 		this.code = code;
 	}
 
-
 	public Item() {
 		super();
-	
-	}
 
+	}
 
 	public int getNumber() {
 		return number;
@@ -83,27 +81,26 @@ public class Item {
 		this.code = code;
 	}
 
-
-@Override
+	@Override
 	public String toString() {
 		return "Item [number=" + number + ", name=" + name + ", amount=" + amount + ", code=" + code + "]";
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(amount, code, name, number);
+	}
 
-@Override
-public int hashCode() {
-	return Objects.hash(amount, code, name, number);
-}
-
-@Override
-public boolean equals(Object obj) {
-	if (this == obj)
-		return true;
-	if (obj == null)
-		return false;
-	if (getClass() != obj.getClass())
-		return false;
-	Item other = (Item) obj;
-	return amount == other.amount && code == other.code && Objects.equals(name, other.name) && number == other.number;
-}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Item other = (Item) obj;
+		return amount == other.amount && code == other.code && Objects.equals(name, other.name)
+				&& number == other.number;
+	}
 }

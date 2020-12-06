@@ -10,7 +10,7 @@ import practiceOL.exception.ItemNotFoundExcption;
 /**
  * Exposed the item dao layer
  * 
- * @author alon seftel
+ * @author alons
  *
  */
 @Service
