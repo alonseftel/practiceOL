@@ -40,7 +40,7 @@ public class ItemFacade {
 		itemdb.addItem(item);
 	}
 
-	public void deleteItem(int itemNumber) {
+	public void deleteItem(int itemNumber) throws ItemNotFoundExcption {
 		itemdb.deleteItem(itemNumber);
 	}
 

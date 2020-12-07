@@ -1,12 +1,19 @@
 package practiceOL.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Repository;
 
 import practiceOL.Beans.Item;
 import practiceOL.exception.AmountItsNotAviableExcption;
 import practiceOL.exception.ItemNotFoundExcption;
 
+/**
+ * Expose the DB operations on Item
+ * 
+ * @author alons
+ *
+ */
 @Repository
 public class ItemDB {
 	@Autowired
@@ -74,9 +81,15 @@ public class ItemDB {
 	 * Delete item from stock
 	 * 
 	 * @param itemNumber
+	 * @throws ItemNotFoundExcption
 	 */
-	public void deleteItem(int itemNumber) {
-		itemRepo.deleteById(itemNumber);
+	public void deleteItem(int itemNumber) throws ItemNotFoundExcption {
+		try {
+			itemRepo.deleteById(itemNumber);
+		} catch (EmptyResultDataAccessException e) {
+			throw new ItemNotFoundExcption();
+		}
+
 	}
 
 }

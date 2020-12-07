@@ -72,7 +72,7 @@ public class ItemController {
 	}
 
 	@DeleteMapping("/items/{itemNumber}")
-	public ResponseEntity<Object> deleteItem(@PathVariable int itemNumber) {
+	public ResponseEntity<Object> deleteItem(@PathVariable int itemNumber) throws ItemNotFoundExcption {
 		try {
 			itemFacade.deleteItem(itemNumber);
 			return ResponseEntity.ok("item is delete");
